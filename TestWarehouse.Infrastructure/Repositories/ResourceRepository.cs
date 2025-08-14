@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-
 using TestWarehouse.Domain.Entities;
 using TestWarehouse.Domain.Enums;
 using TestWarehouse.Domain.Interfaces;
@@ -8,13 +7,31 @@ using TestWarehouse.Infrastructure.Persistence;
 
 namespace TestWarehouse.Infrastructure.Repositories;
 
-public class ResourceRepository
+public class ResourceRepository : Repository<Resource, Guid>, IResourceRepository
 {
-    
+    private readonly AppDbContext _db;
+
+    public ResourceRepository(AppDbContext db)
+    {
+        _db = db;
+    }
+
+    public override DbSet<Resource> GetDbSet() => _db.Resources;
+    public override DbContext GetDbContext() => _db;
 }
 
-public class UnitRepository {
+public class UnitRepository : Repository<Unit, Guid>
+{
+    private readonly AppDbContext _db;
 
+    public UnitRepository(AppDbContext db)
+    {
+        _db = db;
+    }
+
+    public override DbSet<Unit> GetDbSet() => _db.Units;
+
+    public override DbContext GetDbContext() => _db;
 }
 
 public class BalanceRepository : Repository<Balance, Guid>, IBalanceRepository

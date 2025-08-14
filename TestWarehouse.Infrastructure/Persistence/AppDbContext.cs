@@ -10,4 +10,6 @@ public class AppDbContext : DbContext
 
     public DbSet<ShipmentDocument> ShipmentDocuments => Set<ShipmentDocument>();
     public DbSet<Document> Documents => Set<Document>();
+    public DbSet<Resource> Resources => Set<Resource>();
+    public DbSet<Unit> Units => Set<Unit>();
 }
