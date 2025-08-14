@@ -1,0 +1,18 @@
+﻿services:
+  testwarehouse.api:
+    image: testwarehouse.api
+    build:
+      context: .
+      dockerfile: TestWarehouse.API/Dockerfile
+
+  testwarehouse.web:
+    image: testwarehouse.web
+    build:
+      context: .
+      dockerfile: TestWarehouse.Web/TestWarehouse.Web/Dockerfile
+
+  testwarehouse.web.client:
+    image: testwarehouse.web.client
+    build:
+      context: .
+      dockerfile: TestWarehouse.Web/TestWarehouse.Web.Client/Dockerfile
